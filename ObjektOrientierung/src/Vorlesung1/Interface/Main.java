@@ -1,8 +1,4 @@
-package Übung1_Interface;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.*;
+package Vorlesung1.Interface;
 
 /**
  * Created by Marcus on 17.03.2017.
