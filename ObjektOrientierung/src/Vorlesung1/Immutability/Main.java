@@ -1,18 +1,25 @@
 package Vorlesung1.Immutability;
-import  java.*;
+
 /**
  * Created by Marcus on 20.03.2017.
  */
 public class Main {
     public static void main(String[] args) {
-        Euro one = new Euro(3,51);
-        Euro two = new Euro(2,5);
-        Euro sum = Euro.AddUpTwoEuros(one,two);
-        Euro subst = Euro.SubstractTwoEuros(one,two);
-        Euro multi = Euro.Multiplikate(two,1.49);
-        sum.Print();
-        subst.Print();
-        multi.Print();
+        try {
+
+            Money one = new Money(3, 10);
+            Money two = new Money(2, 51);
+            Money sum = Money.AddUpMoney(one, two);
+        Money subst = Money.SubstractMoney(one, two);
+            Money multi = Money.MultiplikateWithInteger(two, 2.801);
+            sum.Print();
+            subst.Print();
+            multi.Print();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
