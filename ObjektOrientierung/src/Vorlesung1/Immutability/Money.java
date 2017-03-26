@@ -7,10 +7,10 @@ public class Money
 {
 
 
-    private final int euro;
+    private final long euro;
     private final int cents;
 
-    public Money(int euro, int cent) throws Exception
+    public Money(long euro, int cent) throws Exception
     {
         if (cent > 100 || cent < 0) throw new Exception();
         this.euro = euro;
@@ -20,7 +20,7 @@ public class Money
     public static Money AddUpMoney(Money positionOne, Money positionTwo) throws Exception
     {
         int newCents = positionOne.cents + positionTwo.cents;
-        int newEuro = positionOne.euro + positionTwo.euro + (newCents - (newCents % 100)) / 100;
+        long newEuro = positionOne.euro + positionTwo.euro + (newCents - (newCents % 100)) / 100;
 
         return new Money(newEuro, newCents % 100);
 
@@ -29,7 +29,7 @@ public class Money
     public static Money SubstractMoney(Money positionOne, Money positionTwo) throws Exception
     {
         int resultCent;
-        int resultEuro;
+        long resultEuro;
 
         resultEuro = positionOne.euro - positionTwo.euro;
         resultCent = positionOne.cents - positionTwo.cents;
@@ -47,7 +47,7 @@ public class Money
 
         double newEuro;
         double newCent;
-        int resultEuro;
+        long resultEuro;
         int resultCent;
         boolean negate = false;
         if (faktor == 0) throw new Exception("Can´t multiplikate with 0");
@@ -73,7 +73,6 @@ public class Money
             newEuro = AddUpDouble(Math.abs(money.euro), faktor);
             newCent = AddUpDouble(money.cents, faktor);
             negate = true;
-
         }
 
 
@@ -90,7 +89,7 @@ public class Money
         return new Money(resultEuro, resultCent);
     }
 
-    private static double AddUpDouble(int times, double value)
+    private static double AddUpDouble(long times, double value)
     {
         double newValue = 0;
         for (int i = 0; i < times; i++)
@@ -112,7 +111,7 @@ public class Money
         return cents;
     }
 
-    public int getEuro()
+    public long getEuro()
     {
         return euro;
     }
@@ -120,7 +119,7 @@ public class Money
     @Override
     public String toString()
     {
-        return this.euro + "," + String.format("%02d", this.cents) + " euro";
+        return this.euro + "," + String.format("%02d", this.cents) + " Euro";
     }
 
     @Override
@@ -138,7 +137,7 @@ public class Money
     @Override
     public int hashCode()
     {
-        int result = getEuro();
+        int result = (int) (getEuro() ^ (getEuro() >>> 32));
         result = 31 * result + getCents();
         return result;
     }
