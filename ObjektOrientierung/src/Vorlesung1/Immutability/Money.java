@@ -31,7 +31,6 @@ public class Money
         int resultCent;
         int resultEuro;
 
-
         resultEuro = positionOne.euro - positionTwo.euro;
         resultCent = positionOne.cents - positionTwo.cents;
         if (resultCent < 0)
@@ -39,7 +38,6 @@ public class Money
             resultEuro--;
             resultCent += 100;
         }
-
         return new Money(resultEuro, resultCent);
 
     }
@@ -49,8 +47,9 @@ public class Money
 
         double newEuro;
         double newCent;
-
-
+        int resultEuro;
+        int resultCent;
+        boolean negate = false;
         if (faktor == 0) throw new Exception("Can´t multiplikate with 0");
 
 
@@ -73,7 +72,8 @@ public class Money
             faktor = Math.abs(faktor);
             newEuro = AddUpDouble(Math.abs(money.euro), faktor);
             newCent = AddUpDouble(money.cents, faktor);
-            newEuro *= (-1);
+            negate = true;
+
         }
 
 
@@ -81,7 +81,13 @@ public class Money
         newEuro += newCent;
         String euroString = String.format("%.2f", newEuro);
         String[] split = euroString.split(",");
-        return new Money(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
+        resultEuro = Integer.parseInt(split[0]);
+        resultCent = Integer.parseInt(split[1]);
+        if (negate == true)
+        {
+            resultEuro *= (-1);
+        }
+        return new Money(resultEuro, resultCent);
     }
 
     private static double AddUpDouble(int times, double value)

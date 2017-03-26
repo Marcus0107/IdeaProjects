@@ -35,7 +35,7 @@ public class MultiplyTest
         return Arrays.asList(new Object[][]{
                         {new Money(5, 0), new Money(15, 0), 3.0,},
                         {new Money(5, 0), new Money(-12, 50), -2.5,},
-                        {new Money(3, 12), new Money(-9, 82), -3.15,},
+                        {new Money(3, 12), new Money(-9, 83), -3.15,},
                         {new Money(-2, 95), new Money(6, 49), -2.2,},
                 }
         );
