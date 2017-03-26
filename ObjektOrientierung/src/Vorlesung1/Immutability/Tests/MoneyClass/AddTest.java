@@ -42,6 +42,7 @@ public class AddTest
     public void addUpTwoEuro() throws Exception
     {
         Money result = Money.AddUpMoney(positionOne, positionTwo);
+        System.out.println(positionOne.toString()+" + " + positionTwo.toString() + " = "  +result.toString());
         assertEquals(expected, result);
     }
 }

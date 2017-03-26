@@ -13,6 +13,7 @@ public class Main {
             Money subst = Money.SubstractMoney(one, two);
             Money multi = Money.Multiply(two, 2.801);
             sum.Print();
+
             subst.Print();
             multi.Print();
 

@@ -101,8 +101,6 @@ public class Money
 
     public void Print()
     {
-
-
         System.out.println(this.toString());
     }
 
