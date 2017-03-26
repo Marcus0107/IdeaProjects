@@ -1,8 +1,9 @@
-package Vorlesung1.Immutability;
+package Vorlesung1.Immutability.Tests.MoneyClass;
 
 import java.util.Arrays;
 import java.util.Collection;
 
+import Vorlesung1.Immutability.Money;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -35,7 +36,7 @@ public class MultiplyTest
         return Arrays.asList(new Object[][]{
                         {new Money(5, 0), new Money(15, 0), 3.0,},
                         {new Money(5, 0), new Money(-12, 50), -2.5,},
-                        {new Money(3, 12), new Money(-9, 83), -3.15,},
+                        {new Money(-3, 12), new Money(9, 83), -3.15,},
                         {new Money(-2, 95), new Money(6, 49), -2.2,},
                 }
         );
