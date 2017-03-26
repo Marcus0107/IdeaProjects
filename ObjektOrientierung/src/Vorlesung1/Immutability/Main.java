@@ -10,10 +10,10 @@ public class Main {
             Money one = new Money(3, 10);
             Money two = new Money(2, 51);
             Money sum = Money.AddUpMoney(one, two);
-            //Money subst = Money.SubstractMoney(one, two);
+            Money subst = Money.SubstractMoney(one, two);
             Money multi = Money.Multiply(two, 2.801);
             sum.Print();
-          //  subst.Print();
+            subst.Print();
             multi.Print();
 
 

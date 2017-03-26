@@ -28,28 +28,27 @@ public class Money
 
     public static Money SubstractMoney(Money positionOne, Money positionTwo) throws Exception
     {
-        int resultCent = 0;
-        int resultEuro = 0;
-        if (positionOne.cents > positionTwo.cents)
-        {
-            resultCent = positionOne.cents - positionTwo.cents;
-        }
-        else
-        {
-            resultCent = (10000 - (positionOne.cents - positionTwo.cents) * 100) / 100;
-        }
+        int resultCent;
+        int resultEuro;
+
+
         resultEuro = positionOne.euro - positionTwo.euro;
+        resultCent = positionOne.cents - positionTwo.cents;
+        if (resultCent < 0)
+        {
+            resultEuro--;
+            resultCent += 100;
+        }
 
-
-        return new Money(resultEuro, resultCent / 100);
+        return new Money(resultEuro, resultCent);
 
     }
 
     public static Money Multiply(Money money, double faktor) throws Exception
     {
 
-        double newEuro = 0;
-        double newCent = 0;
+        double newEuro;
+        double newCent;
 
 
         if (faktor == 0) throw new Exception("Can´t multiplikate with 0");
