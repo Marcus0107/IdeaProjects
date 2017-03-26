@@ -7,27 +7,22 @@ public class Money
 {
 
 
-    private final int Euro;
+    private final int euro;
     private final int cents;
 
     public Money(int euro, int cent) throws Exception
     {
         if (cent > 100 || cent < 0) throw new Exception();
-        Euro = euro;
-        cents = cent;
-
+        this.euro = euro;
+        cents = Math.abs(cent);
     }
 
     public static Money AddUpMoney(Money positionOne, Money positionTwo) throws Exception
     {
+        int newCents = positionOne.cents + positionTwo.cents;
+        int newEuro = positionOne.euro + positionTwo.euro + (newCents - (newCents % 100)) / 100;
 
-        int Cents = positionOne.cents + positionTwo.cents;
-
-        int resultWholeEuro = positionOne.Euro + positionTwo.Euro + (Cents - (Cents % 100)) / 100;
-
-        int resultCent = Cents % 100;
-
-        return new Money(resultWholeEuro, resultCent);
+        return new Money(newEuro, newCents % 100);
 
     }
 
@@ -38,36 +33,48 @@ public class Money
         if (positionOne.cents > positionTwo.cents)
         {
             resultCent = positionOne.cents - positionTwo.cents;
-        } else
-        {
-            resultCent =(10000- (positionOne.cents-positionTwo.cents)*100)/100;
         }
-         resultEuro = positionOne.Euro - positionTwo.Euro;
+        else
+        {
+            resultCent = (10000 - (positionOne.cents - positionTwo.cents) * 100) / 100;
+        }
+        resultEuro = positionOne.euro - positionTwo.euro;
 
 
-
-        return new Money(resultEuro, resultCent/100);
+        return new Money(resultEuro, resultCent / 100);
 
     }
 
-    public static Money MultiplikateWithInteger(Money money, double faktor) throws Exception
+    public static Money Multiply(Money money, double faktor) throws Exception
     {
 
         double newEuro = 0;
         double newCent = 0;
 
+
         if (faktor == 0) throw new Exception("Can´t multiplikate with 0");
 
-        if (money.Euro >= 0 && faktor >= 0)
+
+        // "+" * "+"
+        if (money.euro >= 0 && faktor >= 0)
         {
-            for (int i = 0; i < money.Euro; i++)
-            {
-                newEuro += faktor;
-            }
-            for (int i = 0; i < money.cents; i++)
-            {
-                newCent += faktor;
-            }
+            newEuro = AddUpDouble(money.euro, faktor);
+            newCent = AddUpDouble(money.cents, faktor);
+        }
+        //"-" * "-"
+        else if (money.euro < 0 && faktor < 0)
+        {
+            faktor = Math.abs(faktor);
+            newEuro = AddUpDouble(Math.abs(money.euro), faktor);
+            newCent = AddUpDouble(money.cents, faktor);
+        }
+        //"-" * "+" or "+" * "-"
+        else
+        {
+            faktor = Math.abs(faktor);
+            newEuro = AddUpDouble(Math.abs(money.euro), faktor);
+            newCent = AddUpDouble(money.cents, faktor);
+            newEuro *= (-1);
         }
 
 
@@ -78,6 +85,15 @@ public class Money
         return new Money(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
     }
 
+    private static double AddUpDouble(int times, double value)
+    {
+        double newValue = 0;
+        for (int i = 0; i < times; i++)
+        {
+            newValue += value;
+        }
+        return newValue;
+    }
 
     public void Print()
     {
@@ -93,13 +109,32 @@ public class Money
 
     public int getEuro()
     {
-        return Euro;
+        return euro;
     }
 
     @Override
     public String toString()
     {
-        return this.Euro + "," + String.format("%02d", this.cents) + " Euro";
+        return this.euro + "," + String.format("%02d", this.cents) + " euro";
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Money money = (Money) o;
+
+        if (this.getEuro() != money.getEuro()) return false;
+        return getCents() == money.getCents();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = getEuro();
+        result = 31 * result + getCents();
+        return result;
+    }
 }
