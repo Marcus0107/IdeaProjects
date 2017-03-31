@@ -1,9 +1,9 @@
-package Vorlesung1.Immutability.Tests;
+package Tests;
 
 
-import Vorlesung1.Immutability.Tests.MoneyClass.AddTest;
-import Vorlesung1.Immutability.Tests.MoneyClass.MultiplyTest;
-import Vorlesung1.Immutability.Tests.MoneyClass.SubstractTest;
+import Tests.MoneyClass.AddTest;
+import Tests.MoneyClass.MultiplyTest;
+import Tests.MoneyClass.SubstractTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

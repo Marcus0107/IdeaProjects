@@ -1,9 +1,9 @@
-package Vorlesung1.Immutability.Tests.MoneyClass;
+package Tests.MoneyClass;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import Vorlesung1.Immutability.Money;
+import Aufgaben.Immutability.Money;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class SubstractTest
 {
-    private Money positionOne;
+  /*  private Money positionOne;
     private Money positionTwo;
     private Money expected;
 
@@ -45,5 +45,5 @@ public class SubstractTest
         System.out.println(positionOne.toString()+" + " + positionTwo.toString() + " = "  +result.toString());
         assertEquals(expected, result);
 
-    }
+    }*/
 }
