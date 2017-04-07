@@ -1,4 +1,4 @@
-package Aufgaben.Immutability;
+package Musterlösung.Immutability;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)

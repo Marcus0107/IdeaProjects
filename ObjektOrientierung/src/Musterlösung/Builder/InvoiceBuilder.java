@@ -1,4 +1,4 @@
-package Aufgaben.Builder;
+package Musterlösung.Builder;
 
 import java.util.ArrayList;
 

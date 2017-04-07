@@ -1,6 +1,6 @@
-package Aufgaben.Builder;
+package Musterlösung.Builder;
 
-import Aufgaben.Immutability.Money;
+import Musterlösung.Immutability.Money;
 
 /**
  * Created by Marcus on 31.03.2017.
