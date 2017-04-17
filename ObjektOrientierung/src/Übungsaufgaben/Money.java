@@ -3,8 +3,7 @@ package Übungsaufgaben;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Money
-{
+public class Money {
     private final long cents;
 
     public Money(long cents) {
@@ -29,5 +28,10 @@ public class Money
 
     public Money multiply(double factor) {
         return new Money(Math.round(getCents() * factor));
+    }
+
+    @Override
+    public String toString() {
+        return Double.toString(asDouble()) + " Euro";
     }
 }

@@ -19,8 +19,8 @@ public class InvoiceBuilder {
         public void removeLineItem(LineItem lineItem){
             lineItemList.remove(lineItem);
         }
-
+/*
         public Invoice create(){
             return  new Invoice(lineItemList);
-        }
+        }*/
 }

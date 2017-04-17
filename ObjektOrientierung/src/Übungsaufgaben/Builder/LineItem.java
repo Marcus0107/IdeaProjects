@@ -20,4 +20,13 @@ public class LineItem
     public Money itemSum(){
         return this.price.multiply(quantity);
     }
+
+    @Override
+    public String toString() {
+        return "LineItem{" +
+                "description = " + description  +
+                ", quantity = " + quantity +
+                ", price = " + price +
+                '}';
+    }
 }

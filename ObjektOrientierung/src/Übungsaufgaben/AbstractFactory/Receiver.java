@@ -12,4 +12,11 @@ public class Receiver
         this.name = name;
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return
+                "\nname= " + name +
+                "\naddress= " + address ;
+    }
 }
