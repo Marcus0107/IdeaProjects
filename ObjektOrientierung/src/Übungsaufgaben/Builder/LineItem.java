@@ -7,24 +7,35 @@ import Übungsaufgaben.Money;
  */
 public class LineItem
 {
+
+
     private final String description;
     private final int quantity;
     private final Money price;
 
-    public LineItem(String description,int quantity, Money price ){
+    public LineItem(String description, int quantity, Money price)
+    {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Money itemSum(){
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public Money getItemSum()
+    {
         return this.price.multiply(quantity);
     }
 
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "LineItem{" +
-                "description = " + description  +
+                "description = " + description +
                 ", quantity = " + quantity +
                 ", price = " + price +
                 '}';

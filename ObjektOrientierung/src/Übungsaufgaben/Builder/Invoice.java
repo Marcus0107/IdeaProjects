@@ -2,42 +2,54 @@ package Übungsaufgaben.Builder;
 
 import Übungsaufgaben.AbstractFactory.InvoiceHeader;
 import Übungsaufgaben.Money;
+import Übungsaufgaben.Strategy.TaxCalculator;
 
-import javax.sound.sampled.Line;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Marcus on 12.04.2017.
  */
-public class Invoice {
+public class Invoice
+{
     private final LinkedList<LineItem> lineItemList;
     private final InvoiceHeader header;
-
-    public Invoice(InvoiceHeader header, LinkedList<LineItem> lineItemList) {
+    private  final TaxCalculator taxCalculator;
+    public Invoice(InvoiceHeader header, LinkedList<LineItem> lineItemList, TaxCalculator taxCalculator)
+    {
+        this.taxCalculator = taxCalculator;
         this.header = header;
         this.lineItemList = lineItemList;
     }
 
-    public Money invoiceSum() {
+    public Money invoiceSum()
+    {
         long sum = 0;
 
-        for (LineItem item : lineItemList) {
-            sum += item.itemSum().getCents();
+        for (LineItem item : lineItemList)
+        {
+            sum += item.getItemSum().getCents();
         }
         return new Money(sum);
     }
 
-    public String lineItemListAsString() {
-        String listAsString = "";
-        for (LineItem item : lineItemList) {
-            listAsString += "\n" + item.toString();
-
-        }
-        return listAsString;
+    public List<LineItem> getLineItems(){
+        return  Collections.unmodifiableList(lineItemList);
     }
 
-    public void print() {
-        System.out.println(header.toString() + lineItemListAsString());
+    public Money getSalesTax(){
+        return taxCalculator.calculate(this);
+    }
+
+
+    public void print()
+    {
+        String listAsString = "";
+        for (LineItem item : lineItemList)
+        {
+            listAsString += "\n" + item.toString();
+        }
+        System.out.println(header.toString() + listAsString);
     }
 }
