@@ -33,16 +33,16 @@ public class AdvancedSalesTaxCalculator implements TaxCalculator
         String[] descriptionSplitted;
         for (LineItem lineItem : invoice.getLineItems())
         {
-            descriptionSplitted = lineItem.getDescription().split(" ");
+            descriptionSplitted = lineItem.getArticle().getDescription().split(" ");
             descriptionWords = new LinkedList<>(Arrays.asList(descriptionSplitted));
 
             if (descriptionWords.contains(signalWord))
             {
-                netSum = netSum.add(lineItem.getItemSum().multiply(salesTaxReduced));
+                netSum = netSum.add(lineItem.getSum().multiply(salesTaxReduced));
             }
             else
             {
-                netSum = netSum.add(lineItem.getItemSum().multiply(salesTaxNormal));
+                netSum = netSum.add(lineItem.getSum().multiply(salesTaxNormal));
             }
         }
         return netSum;

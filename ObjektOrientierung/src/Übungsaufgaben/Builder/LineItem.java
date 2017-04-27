@@ -1,43 +1,51 @@
 package Übungsaufgaben.Builder;
 
+import Übungsaufgaben.Composite.Article;
+import Übungsaufgaben.Composite.Composite;
 import Übungsaufgaben.Money;
+import Übungsaufgaben.Visitor.CompositeVisitor;
 
 /**
  * Created by Marcus on 12.04.2017.
  */
-public class LineItem
+public class LineItem implements Composite
 {
 
-
-    private final String description;
+    private final Article article;
     private final int quantity;
-    private final Money price;
 
-    public LineItem(String description, int quantity, Money price)
+    public LineItem(Article article, int quantity)
     {
-        this.description = description;
+        this.article = article;
         this.quantity = quantity;
-        this.price = price;
     }
 
-    public String getDescription()
+    public Article getArticle()
     {
-        return description;
+        return article;
     }
 
-    public Money getItemSum()
+    public int getQuantity()
     {
-        return this.price.multiply(quantity);
+        return quantity;
     }
 
 
     @Override
+    public Money getSum()
+    {
+        return article.getSum().multiply(quantity);
+    }
+
+    @Override
     public String toString()
     {
-        return "LineItem{" +
-                "description = " + description +
-                ", quantity = " + quantity +
-                ", price = " + price +
-                '}';
+        return quantity + " " + article.toString();
+    }
+
+    @Override
+    public void accecpt(CompositeVisitor visitor)
+    {
+        visitor.visitLineItem(this);
     }
 }

@@ -15,7 +15,7 @@ import Übungsaufgaben.Money;
  * Created by Marcus on 23.03.2017.
  */
 public class AbstractFactory
-{
+{/*
     @Test
     public void CreateInvoiceTest(){
         InvoiceBuilder builder = new InvoiceBuilder();
@@ -34,7 +34,6 @@ public class AbstractFactory
 
         builder.addInvoiceHeader(backdateInvoiceFactory.createHeader(receiver));
         invoice = builder.create();
-        invoice.print();
-       // builder.addLineItem();
-    }
+
+    }*/
 }

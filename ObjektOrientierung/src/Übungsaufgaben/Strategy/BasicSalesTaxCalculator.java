@@ -20,7 +20,7 @@ public class BasicSalesTaxCalculator implements TaxCalculator
     @Override
     public Money calculate(Invoice invoice)
     {
-        Money invoiceSum = invoice.invoiceSum();
+        Money invoiceSum = invoice.getSum();
 
         return invoiceSum.multiply(basicSalesTax);
     }

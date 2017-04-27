@@ -20,12 +20,20 @@ public class InvoiceHeader {
         return new Date(this.unixTime);
     }
 
+    public long getInvoiceId()
+    {
+        return invoiceId;
+    }
+
+    public Receiver getReceiver()
+    {
+        return receiver;
+    }
 
     @Override
     public String toString() {
         return  "Date: " + getUnixtimeAsDate() +
-                "\ninvoiceId = " + invoiceId +
-                "\nreceiver: " + receiver
+                "\ninvoiceId = " + invoiceId
                 ;
     }
 }

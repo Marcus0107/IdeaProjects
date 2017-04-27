@@ -16,7 +16,7 @@ public class Receiver
     @Override
     public String toString() {
         return
-                "\nname= " + name +
-                "\naddress= " + address ;
+                name +
+                ", " + address ;
     }
 }
